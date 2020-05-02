@@ -9,7 +9,7 @@ services:
     volumes:
       - ./gcode:/srv
     ports:
-        - "9999:80"
+        - "80:80"
     environment:
         DOMAIN: bg.pmker.com
         EMAIL: leven.zsh@gmail.com
