@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  app:
+    image: delau/app
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    volumes:
+      - ./gcode:/srv
+    ports:
+        - "9999:80"
+    environment:
+        DOMAIN: bg.pmker.com
+        EMAIL: leven.zsh@gmail.com
+
+  mysql:
+      image: mysql:5.7
+      environment:
+        MYSQL_ROOT_PASSWORD: Zheli123
+        MYSQL_DATABASE: pmker
+        MYSQL_USER: pmker
+        MYSQL_PASSWORD: Zheli123
+      ports:
+        - "3306:3306"
+      volumes:
+        - ./data/mysql:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080      
