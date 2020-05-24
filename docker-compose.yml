@@ -7,7 +7,7 @@ services:
       context: "."
       dockerfile: Dockerfile
     volumes:
-      - ./app:/srv
+      - ./gcode:/srv
     ports:
         - "6688:80"
     env_file: .env
@@ -16,12 +16,12 @@ services:
         EMAIL: leven.zsh@gmail.com
 
   mysql:
-        image: mysql:latest
+        image: mysql:5.7
         container_name: mysql
         restart: unless-stopped
         tty: true
         ports:
-        - "3306:3306"
+        - "3366:3306"
         environment:
         - MYSQL_DATABASE=${MYSQL_DATABASE}
         - MYSQL_USER=${MYSQL_USER}
