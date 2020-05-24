@@ -16,7 +16,7 @@ services:
         EMAIL: leven.zsh@gmail.com
 
   mysql:
-        image: mysql:5.7.29
+        image: mysql:latest
         container_name: mysql
         restart: unless-stopped
         tty: true
@@ -30,8 +30,7 @@ services:
         - TZ=${WORKSPACE_TIMEZONE}
         volumes:
         - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
-        - ${MYSQL_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
-
+       
   adminer:
     image: adminer
     restart: always
