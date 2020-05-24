@@ -568,7 +568,7 @@ abstract class AbstractService
 
         $acl = $this->getAcl();
 
-        var_dump($acl);
+
         $requireExplanation = $acl->requireExplanation($collection, $status);
         $action = ArrayUtils::get($params, 'action');
         if (!$requireExplanation && $action) {

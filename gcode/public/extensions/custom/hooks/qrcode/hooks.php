@@ -13,13 +13,19 @@ return [
             $app = \Directus\Application\Application::getInstance();
 
             $itemsService = new ItemsService($app->getContainer());
-            for($i=0;$i<$data["num"];$i++){
+            $product = $itemsService->find('products', $data['product']);
+
+
+
+            for($i=1;$i<=$data["num"];$i++){
                 $params=array();
                 $params['sid']=$data['id'];
                 $params['pid']=$data['product'];
-                $params['code']=sprintf("%d-%d-%d", $params['pid'], $params['sid'],$i);
 
-                $qr_code="http://bg.pmker.com/m/#/?code=". $params['code'];
+                $dec = strtoupper(sprintf("%04s",base_convert($i,10,36)));
+                $params['code']=sprintf("%s-%s-%s", $product['data']['code'], $data['code'],$dec);
+
+                $qr_code="http://bg.pmker.com/m/#/?code=". $params['code']."&pid=".$product['data']['id'];
                 $qrcode_path = $qrcode->create($qr_code,"qrcodes/qr_".$params['sid']);
 
                 $params['qc_path']=$qrcode_path;
