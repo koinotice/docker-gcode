@@ -10,10 +10,8 @@ services:
       - ./gcode:/srv
     ports:
         - "6688:80"
-    env_file: .env
-    environment:
-        DOMAIN: bg.pmker.com
-        EMAIL: leven.zsh@gmail.com
+    env_file:
+      - .env 
 
   mysql:
         image: mysql:5.7

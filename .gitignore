@@ -21,3 +21,4 @@ data
 gcode/public/~
 gcode/public/qrcodes
 gcode/logs
+.env
